@@ -91,7 +91,7 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
 -- Set to true if you have a Nerd Font installed and selected in the terminal
-vim.g.have_nerd_font = false
+vim.g.have_nerd_font = true
 
 -- [[ Setting options ]]
 -- See `:help vim.opt`
@@ -437,6 +437,25 @@ require('lazy').setup({
     end,
   },
 
+  -- BRET's Lazy PLUGINS
+  --
+  --
+
+  -- GitHub Copilot autocomplete
+  { 'github/copilot.vim' },
+
+  -- File Browser via Telescope
+  {
+    'nvim-telescope/telescope-file-browser.nvim',
+    dependencies = { 'nvim-telescope/telescope.nvim', 'nvim-lua/plenary.nvim' },
+
+    -- open file_browser with the path of where nvim was opened (cwd)
+    vim.keymap.set('n', '<leader>fb', ':Telescope file_browser<CR>'),
+
+    -- open file_browser with the path of the current buffer
+    vim.keymap.set('n', '<space>fc', ':Telescope file_browser path=%:p:h select_buffer=true<CR>'),
+  },
+
   -- LSP Plugins
   {
     -- `lazydev` configures Lua LSP for your Neovim config, runtime and plugins
@@ -606,16 +625,28 @@ require('lazy').setup({
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
       local servers = {
         -- clangd = {},
-        -- gopls = {},
-        -- pyright = {},
-        -- rust_analyzer = {},
+        actionlint = {},
+        bashls = {},
+        codespell = {},
+        docker_compose_language_service = {},
+        dockerls = {},
+        gopls = {},
+        hadolint = {},
+        helm_ls = {},
+        jsonls = {},
+        pyright = {},
+        rust_analyzer = {},
+        shellcheck = {},
+        terraformls = {},
+        yamlls = {},
+
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
         --
         -- Some languages (like typescript) have entire language plugins that can be useful:
         --    https://github.com/pmizio/typescript-tools.nvim
         --
         -- But for many setups, the LSP (`ts_ls`) will work just fine
-        -- ts_ls = {},
+        ts_ls = {},
         --
 
         lua_ls = {
