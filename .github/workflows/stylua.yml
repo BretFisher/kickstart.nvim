@@ -1,6 +1,6 @@
 # Check Lua Formatting
 name: Check Lua Formatting
-on: pull_request_target
+on: pull_request
 
 jobs:
   stylua-check:
